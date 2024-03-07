@@ -1,4 +1,8 @@
-.vscode/
 *.pyc
+__pycache__
+
+.vscode/
 .venv
+#core/project/settings/local.py
+
 .env
