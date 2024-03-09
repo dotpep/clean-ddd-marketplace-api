@@ -3,7 +3,10 @@ __pycache__
 
 .vscode/
 .venv
+
 #core/project/settings/local.py
+static/*
+!static/.gitkeep
 
 .env
-*.sqlite3
+*.sqlite*

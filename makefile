@@ -57,6 +57,10 @@ migrations:
 superuser:
 	${EXEC} ${APP_CONTAINER} ${MANAGE_PY} createsuperuser
 
+.PHONY: collectstatic
+collectstatic:
+	${EXEC} ${APP_CONTAINER} ${MANAGE_PY} collectstatic
+
 # OS
 .PHONY: ash
 ash:
