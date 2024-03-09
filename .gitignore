@@ -6,4 +6,4 @@ __pycache__
 #core/project/settings/local.py
 
 .env
-db.sqlite3
+*.sqlite3

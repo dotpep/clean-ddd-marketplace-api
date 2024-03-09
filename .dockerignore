@@ -1,0 +1,8 @@
+*.pyc
+__pycache__
+.vscode/
+*.sqlite3
+.venv/
+*.md
+
+docker_compose/
