@@ -25,7 +25,4 @@ class ProductSchema(BaseModel):
         )
 
 
-#class ProductListSchema(BaseModel):
-#    products: List[ProductSchema]
-
 ProductListSchema = list[ProductSchema]
