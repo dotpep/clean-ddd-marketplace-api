@@ -19,8 +19,6 @@ class BaseProductService(ABC):  # Interface/Abstract (BaseNameService) IProductS
     @abstractmethod
     def get_product_count(self, filters: ProductFilters) -> int:
         pass
-    
-    # abstractmethod decorator vs raise NotImplementedError()
 
 
 # TODO: implement filters to service layer for avoid violating D principles in SOLID
@@ -30,7 +28,6 @@ class ORMProductService(BaseProductService):
         
         if filters.search is not None:
             query &= (Q(title__icontains=filters.search) | Q(description__icontains=filters.search))
-            #query = query & Q(title__icontains=filters.search)
         
         return query
 
@@ -41,7 +38,6 @@ class ORMProductService(BaseProductService):
         pagination_step = pagination_offset + pagination.limit
         
         queryset = ProductModel.objects.filter(query)[pagination_offset:pagination_step]
-        #queryset = ProductModel.objects.filter(is_visible=True)[pagination.offset:pagination.offset + pagination.limit]
         return [
             # TODO: Implement correct DDD separated fucntion converter for converting Domain Entity -> ORM/Etc(DTO), Schema 
             product.to_entity() for product in queryset

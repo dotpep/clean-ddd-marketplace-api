@@ -11,7 +11,7 @@ TListItem = TypeVar('TListItem')
 
 
 class PingResponseSchema(Schema):
-    result: bool = False
+    is_healthy: bool = False
 
 
 class ListPaginatedResponse(Schema, Generic[TListItem]):
