@@ -3,13 +3,13 @@ from django.db import models
 
 class TimedBaseModel(models.Model):
     created_at = models.DateTimeField(
-        verbose_name='Дата создания', 
-        auto_now_add=True
+        verbose_name='Дата создания',
+        auto_now_add=True,
     )
     updated_at = models.DateTimeField(
-        verbose_name='Дата изменения', 
-        auto_now=True
+        verbose_name='Дата изменения',
+        auto_now=True,
     )
-    
+
     class Meta:
         abstract = True

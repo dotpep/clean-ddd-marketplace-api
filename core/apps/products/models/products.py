@@ -7,18 +7,18 @@ from core.apps.products.entities.products import Product as ProductEntity
 # DTO (Data Transfer Object)
 class Product(TimedBaseModel):
     title = models.CharField(
-        verbose_name='Название товара', 
-        max_length=255
+        verbose_name='Название товара',
+        max_length=255,
     )
     description = models.TextField(
-        verbose_name='Описание товара', 
-        blank=True
+        verbose_name='Описание товара',
+        blank=True,
     )
     is_visible = models.BooleanField(
-        verbose_name='Виден ли товар в каталоге', 
-        default=True
+        verbose_name='Виден ли товар в каталоге',
+        default=True,
     )
-    
+
     # simplified version of converter in DDD architecture for DTO (Entity)
     def to_entity(self) -> ProductEntity:
         return ProductEntity(

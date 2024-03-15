@@ -5,8 +5,9 @@ from datetime import datetime
 # Domain Entity (simplified DDD without object value and validation) for retrive DTO
 @dataclass
 class Product:
-    """Domain Entity of Product"""
-    id: int
+    """Domain Entity of Product."""
+
+    id: int  # noqa
     title: str
     description: str
     created_at: datetime
