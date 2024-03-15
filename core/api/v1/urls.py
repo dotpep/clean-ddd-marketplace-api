@@ -1,8 +1,8 @@
-from ninja import Router
 from django.http import HttpRequest
+from ninja import Router
 
-from core.api.v1.products.handlers import router as product_router
 from core.api.schemas import PingResponseSchema
+from core.api.v1.products.handlers import router as product_router
 
 
 router = Router()

@@ -21,8 +21,10 @@ This is ideal, clean and well-structured/architected Django Boilerplate and exam
 - [x] Docker Compose for separated PostgreSQL and Main-App with `.env` file
 - [x] Implement Makefile commands to iteraction with Docker Compose
 - [ ] Implement DDD architecture, Clean Architecture with applying Clean Code, SOLID principles and Patterns
-- [ ] Write Unit Tests
-- [ ] Elasticsearch APM and Kibana
+    - [ ] Write docstring for class
+- [ ] Setup Linters/Formatter and Pre-commit
+- [ ] Write Tests using Pytest
+- [ ] Elasticsearch APM and Kibana (ELK) logging and monitoring system
 
 ## Architecture
 

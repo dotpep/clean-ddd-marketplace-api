@@ -1,16 +1,18 @@
-from abc import ABC, abstractmethod
+from abc import (
+    ABC,
+    abstractmethod,
+)
 from typing import Iterable
-# Protocol vs ABC
 
 from django.db.models import Q
 
+from core.api.filters import PaginationIn
+from core.api.v1.products.filters import ProductFilters
 from core.apps.products.entities.products import Product
 from core.apps.products.models.products import Product as ProductModel  # Django ORM, Product DTO (Data Transfer Object)
 
-from core.api.v1.products.filters import ProductFilters
-from core.api.filters import PaginationIn
 
-
+# Protocol vs ABC
 class BaseProductService(ABC):  # Interface/Abstract (BaseNameService) IProductService
     @abstractmethod
     def get_product_list(self, filters: ProductFilters, pagination: PaginationIn) -> Iterable[Product]:

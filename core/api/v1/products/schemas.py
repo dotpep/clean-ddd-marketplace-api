@@ -1,7 +1,7 @@
-from pydantic import BaseModel
-
 from datetime import datetime
 from typing import List
+
+from pydantic import BaseModel
 
 from core.apps.products.entities.products import Product as ProductEntity
 
