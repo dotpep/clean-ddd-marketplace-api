@@ -1,8 +1,13 @@
 *.pyc
-__pycache__
+__pycache__/
 .vscode/
-*.sqlite3
+*.sqlite*
 .venv/
 *.md
 
 docker_compose/
+.env.example
+requirements.txt
+README.md
+docs/
+tests/

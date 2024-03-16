@@ -8,6 +8,9 @@ APP_FILE = docker_compose/app.yaml
 APP_CONTAINER = main-app
 MANAGE_PY = python manage.py
 DB_NAME = clean_marketplace
+POETRY = poetry run
+TESTS_FILE = tests/
+PYTEST_FLAGS = --verbose --disable-warnings --exitfirst --capture=no
 
 
 # Postgres DB storage
@@ -65,3 +68,12 @@ collectstatic:
 .PHONY: ash
 ash:
 	${EXEC} ${APP_CONTAINER} ash
+
+# Tests
+.PHONY: pytest
+pytest:
+	${POETRY} pytest ${PYTEST_FLAGS} ${TESTS_FILE}
+
+.PHONY: run-test
+run-test:
+	${EXEC} ${APP_CONTAINER} pytest ${PYTEST_FLAGS} ${TESTS_FILE}

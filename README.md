@@ -22,7 +22,7 @@ This is ideal, clean and well-structured/architected Django Boilerplate and exam
 - [x] Implement Makefile commands to iteraction with Docker Compose
 - [ ] Implement DDD architecture, Clean Architecture with applying Clean Code, SOLID principles and Patterns
     - [ ] Write docstring for class
-- [ ] Setup Linters/Formatter and Pre-commit
+- [x] Setup Linters/Formatter and Pre-commit
 - [ ] Write Tests using Pytest
 - [ ] Elasticsearch APM and Kibana (ELK) logging and monitoring system
 

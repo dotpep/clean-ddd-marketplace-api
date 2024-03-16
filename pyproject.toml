@@ -17,13 +17,22 @@ django-ninja = "^1.1.0"
 [tool.poetry.group.dev.dependencies]
 isort = "^5.13.2"
 pre-commit = "^3.6.2"
+pytest = "^8.1.1"
+pytest-django = "^4.8.0"
+faker = "^24.2.0"
+factory-boy = "^3.3.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
+# Test settings - Pytest Django
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "core.project.settings.local"
 
+
+# Linters/Formatters settings
 [tool.isort]
 # Global settings
 multi_line_output = 3
