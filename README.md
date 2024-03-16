@@ -80,3 +80,7 @@ cd clean-marketplace
 - `make migrate` - apply all migrations
 - `make superuser` - create admin user
 - `make collectstatic` - collect all static files in project to base-dir static folder
+
+---
+
+- `make run-tests` - run django integrated database tests (requires `make app`, run django server)
