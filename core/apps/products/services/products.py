@@ -8,8 +8,8 @@ from django.db.models import Q
 
 from core.api.filters import PaginationIn
 from core.api.v1.products.filters import ProductFilters
-from core.apps.products.entities.products import Product
-from core.apps.products.models.products import Product as ProductModel  # Django ORM, Product DTO (Data Transfer Object)
+from core.apps.products.entities.products import ProductEntity
+from core.apps.products.models.products import ProductModel  # Django ORM, Product DTO (Data Transfer Object)
 
 
 # Protocol vs ABC
@@ -19,7 +19,7 @@ class BaseProductService(ABC):  # Interface/Abstract (BaseNameService) IProductS
         self,
         filters: ProductFilters,
         pagination: PaginationIn,
-    ) -> Iterable[Product]:
+    ) -> Iterable[ProductEntity]:
         pass
 
     @abstractmethod
@@ -43,7 +43,7 @@ class ORMProductService(BaseProductService):
         self,
         filters: ProductFilters,
         pagination: PaginationIn,
-    ) -> Iterable[Product]:
+    ) -> Iterable[ProductEntity]:
         query = self._build_product_query(filters)
 
         pagination_offset = pagination.offset

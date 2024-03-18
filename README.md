@@ -23,7 +23,8 @@ This is ideal, clean and well-structured/architected Django Boilerplate and exam
 - [ ] Implement DDD architecture, Clean Architecture with applying Clean Code, SOLID principles and Patterns
     - [ ] Write docstring for class
 - [x] Setup Linters/Formatter and Pre-commit
-- [ ] Write Tests using Pytest
+- [x] Write Tests using Pytest
+- [ ] Authentication and Authentication with JWT Token
 - [ ] Elasticsearch APM and Kibana (ELK) logging and monitoring system
 
 ## Architecture
