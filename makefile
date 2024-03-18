@@ -69,6 +69,10 @@ collectstatic:
 ash:
 	${EXEC} ${APP_CONTAINER} ash
 
+.PHONY: django-shell
+django-shell:
+	${EXEC} ${APP_CONTAINER} ${MANAGE_PY} shell -i ipython
+
 # Tests
 .PHONY: pytest
 pytest:

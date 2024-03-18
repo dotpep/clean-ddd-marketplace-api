@@ -73,7 +73,8 @@ cd clean-marketplace
 
 - `make postgres` - enter to postgres db interactive shell mode (psql) to perform SQL queries
 - `make postgres-db` - immediately go to project database interactive shell mode
-- `make ash` - enter to interactive ash shell of project app
+- `make ash` - enter to interactive ash shell of project app for alpine docker image
+- `make django-shell` - enter to django shell of project app using ipython interactive mode
 
 ### Django specific commands
 
