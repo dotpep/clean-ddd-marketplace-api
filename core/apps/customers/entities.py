@@ -1,6 +1,8 @@
 from dataclasses import dataclass
+from datetime import datetime
 
 
 @dataclass
 class CustomerEntity:
-    pass
+    phone: str
+    created_at: datetime

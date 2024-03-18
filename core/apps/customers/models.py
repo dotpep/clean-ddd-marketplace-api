@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from django.db import models
 
 from core.apps.common.models import TimedBaseModel
@@ -13,6 +15,7 @@ class CustomerModel(TimedBaseModel):
         verbose_name='User Auth Token',
         max_length=255,
         unique=True,
+        default=uuid4,
     )
 
     def __str__(self) -> str:
