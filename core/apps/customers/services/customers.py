@@ -12,5 +12,9 @@ class BaseCustomerService(ABC):
         pass
 
     @abstractmethod
+    def get(self, phone: str) -> CustomerEntity:
+        pass
+
+    @abstractmethod
     def generate_token(self, customer: CustomerEntity) -> str:
         pass

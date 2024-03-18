@@ -21,9 +21,17 @@ class BaseAuthService(ABC):
         pass
 
     @abstractmethod
-    def confirm(self, token: str) -> None:
+    def confirm(self, code: str, phone: str) -> None | str:
         pass
 
 
 class AuthService(BaseAuthService):
-    pass
+    def authorize(self, phone: str) -> None:
+        customer = self.customer_service.get_or_create(phone=phone)
+        code = self.code_service.generate_code(customer=customer)
+        self.sender_service.send_code(code=code)
+
+    def confirm(self, code: str, phone: str) -> None | str:
+        customer = self.customer_service.get(phone=phone)
+        self.code_service.validate_code(code=code, customer=customer)
+        return self.customer_service.generate_token(customer=customer)

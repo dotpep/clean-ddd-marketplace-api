@@ -12,5 +12,5 @@ class BaseCodeService(ABC):
         pass
 
     @abstractmethod
-    def validate_code(self, code: str, customer: CustomerEntity) -> None:
+    def validate_code(self, code: str, customer: CustomerEntity) -> None:  # bool
         pass
