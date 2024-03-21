@@ -25,6 +25,8 @@ This is ideal, clean and well-structured/architected Django Boilerplate and exam
 - [x] Setup Linters/Formatter and Pre-commit
 - [x] Write Tests using Pytest
 - [ ] Authentication and Authentication with JWT Token
+    - [ ] Implement Custom Exceptions for Auth Service
+    - [ ] Implement Redis Cache CodeService
 - [ ] Elasticsearch APM and Kibana (ELK) logging and monitoring system
 
 ## Architecture
