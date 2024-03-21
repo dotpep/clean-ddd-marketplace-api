@@ -14,4 +14,4 @@ class BaseSenderService(ABC):
 
 class DummySenderService(BaseSenderService):
     def send_code(self, customer: CustomerEntity, code: str) -> None:
-        print(f"Code to customer: {customer}, sent: {code}")
+        print(f"Code to customer: {customer=}, sent: {code=}")

@@ -1,11 +1,11 @@
 from datetime import datetime
 
-from pydantic import BaseModel
+from ninja import Schema
 
 from core.apps.products.entities.products import ProductEntity
 
 
-class ProductSchema(BaseModel):
+class ProductSchema(Schema):
     id: int  # noqa
     title: str
     description: str

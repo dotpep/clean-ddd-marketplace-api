@@ -12,9 +12,9 @@ from core.apps.customers.services.senders import BaseSenderService
 @dataclass(eq=False)
 class BaseAuthService(ABC):
     # Initialize services
-    customer_service = BaseCustomerService
-    code_service = BaseCodeService
-    sender_service = BaseSenderService
+    customer_service: BaseCustomerService
+    code_service: BaseCodeService
+    sender_service: BaseSenderService
 
     @abstractmethod
     def authorize(self, phone: str) -> None:
@@ -29,7 +29,7 @@ class AuthService(BaseAuthService):
     def authorize(self, phone: str) -> None:
         customer = self.customer_service.get_or_create(phone=phone)
         code = self.code_service.generate_code(customer=customer)
-        self.sender_service.send_code(code=code)
+        self.sender_service.send_code(customer=customer, code=code)
 
     def confirm(self, code: str, phone: str) -> None | str:
         customer = self.customer_service.get(phone=phone)
