@@ -22,9 +22,11 @@ This is ideal, clean and well-structured/architected Django Boilerplate and exam
 - [x] Implement Makefile commands to iteraction with Docker Compose
 - [ ] Implement DDD architecture, Clean Architecture with applying Clean Code, SOLID principles and Patterns
     - [ ] Write docstring for class
+    - [x] Implement Simple DDD Architecture with layer (Domain, Services, DTO) most like Onion Architecture
+    - [ ] Apply Dependency Inversion/Injection for api endpoints handlers and services
 - [x] Setup Linters/Formatter and Pre-commit
 - [x] Write Tests using Pytest
-- [ ] Authentication and Authentication with JWT Token
+- [ ] Authentication and Authorization with JWT Token
     - [ ] Implement Custom Exceptions for Auth Service
     - [ ] Implement Redis Cache CodeService
 - [ ] Elasticsearch APM and Kibana (ELK) logging and monitoring system
