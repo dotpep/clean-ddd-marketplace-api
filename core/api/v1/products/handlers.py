@@ -14,7 +14,7 @@ from core.api.schemas import (
 )
 from core.api.v1.products.filters import ProductFilters
 from core.api.v1.products.schemas import ProductSchema
-from core.apps.products.apps import container as product_container
+from core.apps.products.containers import get_container
 from core.apps.products.services.products import BaseProductService
 
 
@@ -28,8 +28,9 @@ def get_product_list_handler(
     filters: Query[ProductFilters],
     pagination_in: Query[PaginationIn],
 ) -> ApiResponse[ListPaginatedResponse[ProductSchema]]:
-    # without dependency injection
-    service: BaseProductService = product_container.product_service()
+    # With dependency injection using punq package
+    container = get_container()
+    service: BaseProductService = container.resolve(BaseProductService)
 
     product_list = service.get_product_list(filters=filters, pagination=pagination_in)
     product_count = service.get_product_count(filters=filters)

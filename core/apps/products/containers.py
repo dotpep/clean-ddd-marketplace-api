@@ -1,13 +1,21 @@
-"""Dependency injection container for product."""
-from dependency_injector import (
-    containers,
-    providers,
+from functools import lru_cache
+
+import punq
+
+from core.apps.products.services.products import (
+    BaseProductService,
+    ORMProductService,
 )
 
-from core.apps.products.services.products import ORMProductService
+
+@lru_cache
+def get_container() -> punq.Container:
+    """Dependency injection container for service."""
+    return _initialize_container()
 
 
-class ProductContainer(containers.DeclarativeContainer):
-    # Fabricates a product using Factory pattern in providers (providers.Factory())
-    # Using Singleton pattern (providers.Singleton())
-    product_service = providers.Singleton(ORMProductService)
+def _initialize_container() -> punq.Container:
+    container = punq.Container()
+    container.register(BaseProductService, ORMProductService)
+
+    return container
