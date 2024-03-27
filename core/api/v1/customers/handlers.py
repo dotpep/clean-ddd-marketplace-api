@@ -10,10 +10,8 @@ from core.api.v1.customers.schemas import (
     TokenOutSchema,
 )
 from core.apps.common.exceptions import ServiceException
-from core.apps.customers.services.auth import AuthService
-from core.apps.customers.services.codes import DjangoCacheCodeService
-from core.apps.customers.services.customers import ORMCustomerService
-from core.apps.customers.services.senders import DummySenderService
+from core.apps.customers.services.auth import BaseAuthService
+from core.project.containers import get_container
 
 
 router = Router(tags=['Customers'])
@@ -24,11 +22,9 @@ def authenticate_customer_handler(
     request: HttpRequest,
     schema: AuthInSchema,
 ) -> ApiResponse[AuthOutSchema]:
-    service = AuthService(
-        customer_service=ORMCustomerService(),
-        code_service=DjangoCacheCodeService(),
-        sender_service=DummySenderService(),
-    )
+    container = get_container()
+    service: BaseAuthService = container.resolve(BaseAuthService)
+
     service.authorize(schema.phone)
 
     return ApiResponse(
@@ -43,11 +39,8 @@ def get_token_handler(
     request: HttpRequest,
     schema: TokenInSchema,
 ) -> ApiResponse[TokenOutSchema]:
-    service = AuthService(
-        customer_service=ORMCustomerService(),
-        code_service=DjangoCacheCodeService(),
-        sender_service=DummySenderService(),
-    )
+    container = get_container()
+    service: BaseAuthService = container.resolve(BaseAuthService)
 
     try:
         token = service.confirm(code=schema.code, phone=schema.phone)

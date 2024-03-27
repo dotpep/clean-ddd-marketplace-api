@@ -14,8 +14,8 @@ from core.api.schemas import (
 )
 from core.api.v1.products.filters import ProductFilters
 from core.api.v1.products.schemas import ProductSchema
-from core.apps.products.containers import get_container
 from core.apps.products.services.products import BaseProductService
+from core.project.containers import get_container
 
 
 router = Router(tags=['Products'])
