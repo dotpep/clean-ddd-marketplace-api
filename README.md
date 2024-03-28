@@ -23,7 +23,7 @@ This is ideal, clean and well-structured/architected Django Boilerplate and exam
 - [ ] Implement DDD architecture, Clean Architecture with applying Clean Code, SOLID principles and Patterns
     - [ ] Write docstring for class
     - [x] Implement Simple DDD Architecture with layer (Domain, Services, DTO) most like Onion Architecture
-    - [ ] Apply Dependency Inversion/Injection for api endpoints handlers and services
+    - [x] Apply Dependency Injection for api endpoints handlers and services and Composite Pattern
 - [x] Setup Linters/Formatter and Pre-commit
 - [x] Write Tests using Pytest
 - [ ] Authentication and Authorization with JWT Token

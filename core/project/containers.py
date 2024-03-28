@@ -16,7 +16,9 @@ from core.apps.customers.services.customers import (
 )
 from core.apps.customers.services.senders import (
     BaseSenderService,
-    DummySenderService,
+    CompositeSenderService,
+    EmailExampleSenderService,
+    PushExampleSenderService,
 )
 from core.apps.products.services.products import (
     BaseProductService,
@@ -39,7 +41,16 @@ def _initialize_container() -> punq.Container:
     # Initialize customers
     container.register(BaseCustomerService, ORMCustomerService)
     container.register(BaseCodeService, DjangoCacheCodeService)
-    container.register(BaseSenderService, DummySenderService)
+    # Usage with providing attribute for Service: SMSExampleSenderService, secret_token='super_secret_token_args'
+    # Using Composite Service that handle multiple sender services (Composite Pattern in DI)
+    container.register(
+        BaseSenderService,
+        CompositeSenderService,
+        sender_services=(
+            PushExampleSenderService(),
+            EmailExampleSenderService(),
+        ),
+    )
     container.register(BaseAuthService, AuthService)
 
     return container
