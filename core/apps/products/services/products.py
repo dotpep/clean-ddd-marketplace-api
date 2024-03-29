@@ -7,8 +7,8 @@ from typing import Iterable
 from django.db.models import Q
 
 from core.api.filters import PaginationIn
-from core.api.v1.products.filters import ProductFilters
 from core.apps.products.entities.products import ProductEntity
+from core.apps.products.filters.products import ProductFiltersEntity
 from core.apps.products.models.products import ProductModel  # Django ORM, Product DTO (Data Transfer Object)
 
 
@@ -17,19 +17,19 @@ class BaseProductService(ABC):  # Interface/Abstract (BaseNameService) IProductS
     @abstractmethod
     def get_product_list(
         self,
-        filters: ProductFilters,
+        filters: ProductFiltersEntity,
         pagination: PaginationIn,
     ) -> Iterable[ProductEntity]:
         pass
 
     @abstractmethod
-    def get_product_count(self, filters: ProductFilters) -> int:
+    def get_product_count(self, filters: ProductFiltersEntity) -> int:
         pass
 
 
 # TODO: implement filters to service layer for avoid violating D principles in SOLID
 class ORMProductService(BaseProductService):
-    def _build_product_query(self, filters: ProductFilters) -> Q:
+    def _build_product_query(self, filters: ProductFiltersEntity) -> Q:
         query = Q(is_visible=True)
 
         if filters.search is not None:
@@ -41,7 +41,7 @@ class ORMProductService(BaseProductService):
 
     def get_product_list(
         self,
-        filters: ProductFilters,
+        filters: ProductFiltersEntity,
         pagination: PaginationIn,
     ) -> Iterable[ProductEntity]:
         query = self._build_product_query(filters)
@@ -57,7 +57,7 @@ class ORMProductService(BaseProductService):
             for product in queryset
         ]
 
-    def get_product_count(self, filters: ProductFilters) -> int:
+    def get_product_count(self, filters: ProductFiltersEntity) -> int:
         query = self._build_product_query(filters)
 
         return ProductModel.objects.filter(query).count()
