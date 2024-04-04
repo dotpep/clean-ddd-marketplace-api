@@ -27,7 +27,7 @@ class ProductReviewModel(TimedBaseModel):
     )
 
     def __str__(self):
-        return self.customer + ' ' + self.product
+        return str(self.customer) + ' ' + str(self.product)
 
     class Meta:
         verbose_name = 'Product review'
