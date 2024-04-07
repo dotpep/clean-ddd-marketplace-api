@@ -10,7 +10,7 @@ class ReviewInSchema(Schema):
 
 class CreateReviewSchema(Schema):
     product_id: int
-    client_id: int
+    client_token: str
     reviw: ReviewInSchema
 
 

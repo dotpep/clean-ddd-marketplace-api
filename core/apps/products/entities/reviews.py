@@ -9,7 +9,7 @@ from core.apps.products.entities.products import ProductEntity
 
 
 @dataclass
-class ProductReviewEntity:
+class ReviewEntity:
     """Domain Entity of Product Review."""
     customer: CustomerEntity | EntityStatusEnum = field(default=EntityStatusEnum.NOT_LOADED)
     product: ProductEntity | EntityStatusEnum = field(default=EntityStatusEnum.NOT_LOADED)
