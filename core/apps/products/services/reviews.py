@@ -19,4 +19,11 @@ class BaseReviewService(ABC):
 
 
 class ORMReviewService(BaseReviewService):
-    pass
+    def create_review(
+        self,
+        product_id: int,
+        customer_token: str,
+        rating: str,
+        text: str,
+    ) -> ReviewEntity:
+        pass

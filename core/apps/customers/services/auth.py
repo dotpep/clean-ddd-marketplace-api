@@ -9,6 +9,7 @@ from core.apps.customers.services.customers import BaseCustomerService
 from core.apps.customers.services.senders import BaseSenderService
 
 
+# TODO: Remove business logic and move this to use cases
 @dataclass(eq=False)
 class BaseAuthService(ABC):
     # Initialize services

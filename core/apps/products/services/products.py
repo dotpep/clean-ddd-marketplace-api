@@ -8,6 +8,7 @@ from django.db.models import Q
 
 from core.api.filters import PaginationIn
 from core.apps.products.entities.products import ProductEntity
+from core.apps.products.exceptions.products import ProductNotFoundException
 from core.apps.products.filters.products import ProductFiltersEntity
 from core.apps.products.models.products import ProductModel  # Django ORM, Product DTO (Data Transfer Object)
 
@@ -26,8 +27,11 @@ class BaseProductService(ABC):  # Interface/Abstract (BaseNameService) IProductS
     def get_product_count(self, filters: ProductFiltersEntity) -> int:
         pass
 
+    @abstractmethod
+    def get_by_id(self, product_id: int) -> int:
+        pass
 
-# TODO: implement filters to service layer for avoid violating D principles in SOLID
+
 class ORMProductService(BaseProductService):
     def _build_product_query(self, filters: ProductFiltersEntity) -> Q:
         query = Q(is_visible=True)
@@ -61,3 +65,11 @@ class ORMProductService(BaseProductService):
         query = self._build_product_query(filters)
 
         return ProductModel.objects.filter(query).count()
+
+    def get_by_id(self, product_id: int) -> int:
+        try:
+            product_dto = ProductModel.objects.get(pk=product_id)
+        except ProductModel.DoesNotExist:
+            raise ProductNotFoundException(product_id=product_id)
+
+        return product_dto.to_entity()

@@ -5,6 +5,7 @@ from abc import (
 from uuid import uuid4
 
 from core.apps.customers.entities import CustomerEntity
+from core.apps.customers.exceptions.customers import CustomerTokenInvalidException
 from core.apps.customers.models import CustomerModel
 
 
@@ -19,6 +20,10 @@ class BaseCustomerService(ABC):
 
     @abstractmethod
     def generate_token(self, customer: CustomerEntity) -> str:
+        pass
+
+    @abstractmethod
+    def get_by_token(self, token: str) -> CustomerEntity:
         pass
 
 
@@ -37,3 +42,11 @@ class ORMCustomerService(BaseCustomerService):
             token=new_token,
         )
         return new_token
+
+    def get_by_token(self, token: str) -> CustomerEntity:
+        try:
+            customer_dto = CustomerModel.objects.get(token=token)
+        except CustomerModel.DoesNotExist:
+            raise CustomerTokenInvalidException(token=token)
+
+        return customer_dto.to_entity()
