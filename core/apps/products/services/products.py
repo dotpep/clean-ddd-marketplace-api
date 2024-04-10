@@ -32,6 +32,7 @@ class BaseProductService(ABC):  # Interface/Abstract (BaseNameService) IProductS
         pass
 
 
+# Service and Repository layers is implemented by one in service layer
 class ORMProductService(BaseProductService):
     def _build_product_query(self, filters: ProductFiltersEntity) -> Q:
         query = Q(is_visible=True)

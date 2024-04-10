@@ -35,11 +35,26 @@ This is ideal, clean and well-structured/architected Django Boilerplate and exam
 
 Layers
 
-1. API
-2. Domain
+1. API (endpoint handlers)
+2. Domain (Entity)
 3. Services
-4. DTO + Repo
-5. Others
+4. UseCases
+5. DTO + Repo
+6. Others
+
+---
+Notes:
+
+- Entity is Domain Business logic Interface and Base Class or Abstract Class
+- Both Service and Repository layers implemented in Service layer
+- UseCases Business Process using Services (services uses repository to get data)
+- DTO (Data Transfer Object) and Repo interacts only with data
+
+Entity is like core,
+Service must provide atomicity, UseCase uses Services to process something,
+Repository communicate with services and only interact with data,
+Task queue broker and Web handler communicate with Use Cases and external world,
+Client, Providers and Repositories communicate with Service and external world,
 
 ---
 

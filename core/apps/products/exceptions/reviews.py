@@ -4,9 +4,9 @@ from core.apps.common.exceptions import ServiceException
 
 
 @dataclass(eq=False)
-class ProductNotFoundException(ServiceException):
-    product_id: int
+class ReviewInvalidRatingException(ServiceException):
+    rating: int
 
     @property
     def message(self):
-        return "Product does not exist or found."
+        return "Review rating is not valid"
