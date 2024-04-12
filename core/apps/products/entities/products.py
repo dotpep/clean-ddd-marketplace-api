@@ -6,7 +6,6 @@ from datetime import datetime
 @dataclass
 class ProductEntity:
     """Domain Entity of Product."""
-
     id: int  # noqa
     title: str
     description: str

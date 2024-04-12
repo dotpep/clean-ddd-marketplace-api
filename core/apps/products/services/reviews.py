@@ -7,6 +7,7 @@ from core.apps.customers.entities import CustomerEntity
 from core.apps.products.entities.products import ProductEntity
 from core.apps.products.entities.reviews import ReviewEntity
 from core.apps.products.exceptions.reviews import ReviewInvalidRatingException
+from core.apps.products.models.reviews import ReviewModel
 
 
 class BaseReviewService(ABC):
@@ -21,14 +22,19 @@ class BaseReviewService(ABC):
 
 
 class ReviewService(BaseReviewService):
-    def create_review(
+    def save_review(
         self,
-        product_id: int,
-        customer_token: str,
-        rating: str,
-        text: str,
+        review: ReviewEntity,
+        customer: CustomerEntity,
+        product: ProductEntity,
     ) -> ReviewEntity:
-        pass
+        review_dto: ReviewModel = ReviewModel.from_entity(
+            review=review,
+            customer=customer,
+            product=product,
+        )
+        review_dto.save()
+        return review_dto.to_entity()
 
 
 class BaseReviewValidatorService(ABC):
