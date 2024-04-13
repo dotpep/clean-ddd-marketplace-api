@@ -21,7 +21,7 @@ class BaseReviewService(ABC):
         pass
 
 
-class ReviewService(BaseReviewService):
+class ORMReviewService(BaseReviewService):
     def save_review(
         self,
         review: ReviewEntity,

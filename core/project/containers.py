@@ -24,6 +24,13 @@ from core.apps.products.services.products import (
     BaseProductService,
     ORMProductService,
 )
+from core.apps.products.services.reviews import (
+    BaseReviewService,
+    BaseReviewValidatorService,
+    CompositeReviewValidatorService,
+    ORMReviewService,
+)
+from core.apps.products.use_cases.reviews.create import CreateReviewUseCase
 
 
 @lru_cache
@@ -52,5 +59,9 @@ def _initialize_container() -> punq.Container:
         ),
     )
     container.register(BaseAuthService, AuthService)
+
+    container.register(BaseReviewService, ORMReviewService)
+    container.register(BaseReviewValidatorService, CompositeReviewValidatorService, validators=[])
+    container.register(CreateReviewUseCase)
 
     return container
