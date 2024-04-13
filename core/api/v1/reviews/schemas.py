@@ -6,8 +6,8 @@ from core.apps.products.entities.reviews import ReviewEntity
 
 
 class ReviewInSchema(Schema):
-    text: str
     rating: int
+    text: str
 
     def to_entity(self) -> ReviewEntity:
         return ReviewEntity(text=self.text, rating=self.rating)

@@ -42,9 +42,9 @@ def get_container() -> punq.Container:
 def _initialize_container() -> punq.Container:
     container = punq.Container()
 
+    # Initialize Services
     # Initialize products
     container.register(BaseProductService, ORMProductService)
-
     # Initialize customers
     container.register(BaseCustomerService, ORMCustomerService)
     container.register(BaseCodeService, DjangoCacheCodeService)
@@ -59,9 +59,11 @@ def _initialize_container() -> punq.Container:
         ),
     )
     container.register(BaseAuthService, AuthService)
-
+    # Initialize reviews
     container.register(BaseReviewService, ORMReviewService)
     container.register(BaseReviewValidatorService, CompositeReviewValidatorService, validators=[])
+
+    # Initialize Use Cases
     container.register(CreateReviewUseCase)
 
     return container
