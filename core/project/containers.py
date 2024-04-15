@@ -33,7 +33,7 @@ from core.apps.products.services.reviews import (
 from core.apps.products.use_cases.reviews.create import CreateReviewUseCase
 
 
-@lru_cache
+@lru_cache(1)
 def get_container() -> punq.Container:
     """Dependency injection container for service."""
     return _initialize_container()

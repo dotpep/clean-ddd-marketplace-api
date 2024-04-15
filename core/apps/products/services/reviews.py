@@ -34,6 +34,7 @@ class ORMReviewService(BaseReviewService):
             product=product,
         )
         review_dto.save()
+
         return review_dto.to_entity()
 
 

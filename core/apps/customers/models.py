@@ -23,6 +23,7 @@ class CustomerModel(TimedBaseModel):
         return CustomerEntity(
             phone=self.phone,
             created_at=self.created_at,
+            id=self.pk,
         )
 
     def __str__(self) -> str:

@@ -27,7 +27,7 @@ class ReviewOutSchema(ReviewInSchema):
     @classmethod
     def from_entity(cls, review: ReviewEntity) -> 'ReviewOutSchema':
         return cls(
-            pk=review.id,
+            id=review.id,
             text=review.text,
             rating=review.rating,
             created_at=review.created_at,
