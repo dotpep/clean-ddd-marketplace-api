@@ -1,4 +1,4 @@
-# Clean Architected Django Boilerplace (Marketplace)
+# Clean DDD Architected Django Boilerplace (Marketplace)
 
 This is ideal, clean and well-structured/architected Django Boilerplate and example using Django, Django Ninja, Postgres, Docker and Makefile
 
@@ -31,6 +31,16 @@ This is ideal, clean and well-structured/architected Django Boilerplate and exam
     - [ ] Implement Redis Cache CodeService
 - [ ] Elasticsearch APM and Kibana (ELK) logging and monitoring system
 
+## Features
+
+- Simple DDD Architecture with layers for Business Logic and Process
+- Applied SOLID Principles and OOP Patterns
+- Dependency Injection container to resolve dependencies and using Base Interface classes
+- Linters/Formatter and Pre-commit
+- Database and Project in Docker compose and makefile to run commands in one command
+- OpenAPI Docs
+- Writed Unit Tests
+
 ## Architecture
 
 Layers
@@ -39,7 +49,7 @@ Layers
 2. Domain (Entity)
 3. Services
 4. UseCases
-5. DTO + Repo
+5. DTO + Repo in Service layer
 6. Others
 
 ---
@@ -70,7 +80,7 @@ Client, Providers and Repositories communicate with Service and external world,
 1. **Clone this repository**
 
 ```bash
-git clone https://github.com/dotpep/clean-django-marketplace.git
+git clone https://github.com/dotpep/clean-ddd-marketplace-api.git
 cd clean-marketplace
 ```
 

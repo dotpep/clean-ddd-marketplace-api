@@ -21,9 +21,10 @@ class CreateReviewUseCase:
     # FIXME: punq container cannot initialize dependencies and
     # create insance of provided BaseService ABC class with dependency also
     # review_service Base Interface is BaseReviewService and implementation is ORMReviewService
-    review_service = ORMReviewService()  # fix this line and delete
-    customer_service = ORMCustomerService()  # fix this line and delete
-    product_service = ORMProductService()  # fix this line and delete
+    # error message: missing 1 required positional argument: 'self'
+    review_service = ORMReviewService()  # fix and delete
+    customer_service = ORMCustomerService()  # fix and delete
+    product_service = ORMProductService()  # fix and delete
     validator_service = CompositeReviewValidatorService()  # fix this line and delete
 
     def execute(
@@ -32,12 +33,7 @@ class CreateReviewUseCase:
         customer_token: str,
         review: ReviewEntity,
     ) -> ReviewEntity:
-        # Get product from ID
-        # Check validation of client token
-        # Check rating range 1 <= R <= 5
-        # Check text length and censure
-
-        # FIXME: In sometimes it occurs again when fetching api handler endpoints of create_review
+        # In sometimes it occurs again when fetching api handler endpoints of create_review
         # FIXME: Trouble with initalizating the customer service (ORMCustomerService) to execute instance of method instead Class  # noqa
         # maybe is because Dependency Injection container does not working well and miss initilization of ORMCustomerService  # noqa
         # class Employee: def display(self): pass john = Employee(name='John') Employee.display()  # noqa
@@ -49,7 +45,7 @@ class CreateReviewUseCase:
         customer = self.customer_service.get_by_token(token=customer_token)
         product = self.product_service.get_by_id(product_id=product_id)
 
-        self.validator_service.validators = []  # fix this line and delete
+        self.validator_service.validators = []  # fix and delete
         self.validator_service.validate(review=review, customer=customer, product=product)
 
         saved_review = self.review_service.save_review(review=review, customer=customer, product=product)
